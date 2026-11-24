@@ -75,7 +75,7 @@ p {
 }
 
 .section {
-  padding: 128px 0;
+  padding: 96px 0;
   border-top: 1px solid var(--line);
 }
 .section--tint {
@@ -110,7 +110,7 @@ p {
   font-family: var(--serif);
   font-weight: 400;
   font-size: 30px;
-  margin: 88px 0 28px;
+  margin: 60px 0 24px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--line);
 }
@@ -127,7 +127,7 @@ p {
   display: grid;
   grid-template-columns: 3fr 9fr;
   gap: 32px;
-  margin-bottom: 72px;
+  margin-bottom: 52px;
 }
 .sh__label {
   display: flex;
@@ -363,7 +363,7 @@ p {
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin: 112px 0 0;
+  margin: 80px 0 0;
   border-top: 1px solid var(--line);
 }
 .stat {
@@ -398,7 +398,7 @@ p {
 .focus {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: 96px;
+  margin-top: 64px;
   border-top: 1px solid var(--ink);
 }
 .focus__item {
@@ -429,7 +429,7 @@ p {
   display: grid;
   grid-template-columns: 3fr 9fr;
   gap: 32px;
-  padding: 56px 0;
+  padding: 40px 0;
   border-top: 1px solid var(--line);
 }
 .era:last-child {
@@ -469,8 +469,8 @@ p {
 .ladder {
   background: var(--white);
   border: 1px solid var(--line);
-  padding: 28px 32px 32px;
-  margin-bottom: 24px;
+  padding: 22px 28px 24px;
+  margin-bottom: 16px;
 }
 .ladder ol {
   position: relative;
@@ -519,7 +519,7 @@ p {
   display: grid;
   grid-template-columns: 140px 1fr;
   gap: 24px;
-  padding: 24px 0;
+  padding: 16px 0;
   border-bottom: 1px solid var(--line);
 }
 .entry:first-child {
@@ -534,7 +534,7 @@ p {
 .entry h4 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 1.25;
 }
 .entry__org {
@@ -544,7 +544,7 @@ p {
   margin-top: 2px;
 }
 .entry p {
-  margin-top: 8px;
+  margin-top: 4px;
   font-size: 15px;
   color: var(--muted);
   max-width: 620px;
@@ -630,7 +630,7 @@ p {
 /* ---------- leadership ---------- */
 .roles {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
@@ -642,7 +642,7 @@ p {
   position: relative;
   display: block;
   height: 100%;
-  padding: 40px 40px 44px;
+  padding: 32px 26px 34px;
   transition: background 0.3s;
 }
 .role--link:hover {
@@ -650,7 +650,7 @@ p {
 }
 .role__icon {
   color: var(--accent);
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 .role__org {
   display: block;
@@ -662,7 +662,7 @@ p {
 .role h3 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 32px;
+  font-size: 26px;
   line-height: 1.15;
   margin: 8px 0 12px;
 }
@@ -672,8 +672,8 @@ p {
 }
 .role__arrow {
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 32px;
+  right: 24px;
   color: var(--soft);
   transition: transform 0.3s var(--ease), color 0.3s;
 }
@@ -809,7 +809,7 @@ p {
 .contact {
   background: var(--ink);
   color: var(--paper);
-  padding: 120px 0 40px;
+  padding: 96px 0 40px;
   border-top: 1px solid var(--line-dark);
 }
 .contact__grid {
@@ -1061,7 +1061,7 @@ p {
   display: grid;
   grid-template-columns: 72px 1fr 24px;
   gap: 24px;
-  padding: 22px 0;
+  padding: 18px 0;
   border-bottom: 1px solid var(--line);
 }
 .cite:first-child {
@@ -1218,24 +1218,28 @@ a.work__title:hover {
   text-align: right;
 }
 
+.talks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 48px;
+}
 .talk {
   display: grid;
-  grid-template-columns: 72px 180px 1fr;
-  gap: 24px;
-  padding: 22px 0;
+  grid-template-columns: 64px 1fr;
+  gap: 2px 18px;
+  align-content: start;
+  padding: 18px 0;
   border-bottom: 1px solid var(--line);
 }
-.talk:first-child {
-  padding-top: 4px;
-}
 .talk__year {
+  grid-row: span 2;
   font-family: var(--serif);
   font-size: 26px;
   line-height: 1.2;
   color: var(--accent);
 }
 .talk__role {
-  padding-top: 7px;
+  padding-top: 0;
   font-size: 11.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1244,7 +1248,7 @@ a.work__title:hover {
 .talk h4 {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 23px;
+  font-size: 20px;
   line-height: 1.3;
 }
 .talk span:not(.talk__year):not(.talk__role) {
@@ -1254,13 +1258,13 @@ a.work__title:hover {
   color: var(--muted);
 }
 .venues {
-  margin-top: 64px;
-  padding: 32px 36px;
+  margin-top: 40px;
+  padding: 24px 32px;
   background: var(--paper-2);
 }
 .venues p {
   font-family: var(--serif);
-  font-size: 26px;
+  font-size: 22px;
   line-height: 1.5;
 }
 .venues b {
@@ -1429,6 +1433,9 @@ a.work__title:hover {
   .toolkit {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 48px;
+  }
+  .roles {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -1607,10 +1614,16 @@ a.work__title:hover {
   .output__year.is-label:not(:first-child) {
     font-size: 10px;
   }
+  .talks {
+    grid-template-columns: 1fr;
+  }
   .cite,
   .talk {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+  .talk__year {
+    grid-row: auto;
   }
   .cite__arrow {
     display: none;
