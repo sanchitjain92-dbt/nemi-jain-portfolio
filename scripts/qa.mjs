@@ -40,12 +40,23 @@ const topOf = (page, id) =>
 for (const [name, viewport] of [['desktop', DESKTOP], ['mobile', MOBILE]]) {
   const { page, errors } = await openPage(viewport);
   await scrollThrough(page);
-  const m = await page.evaluate(() => ({
-    height: document.body.scrollHeight,
-    hidden: [...document.querySelectorAll('main *')].filter((e) => getComputedStyle(e).opacity === '0').length,
-    overflow: document.documentElement.scrollWidth > window.innerWidth,
-  }));
-  console.log(`  ${name} home height: ${m.height}px`);
+  const m = await page.evaluate(() => {
+    // Optional owner-added media (Moments, Talks on video) is excluded from the height budget (Ruling 11).
+    const h = (el) => {
+      if (!el) return 0;
+      const cs = getComputedStyle(el);
+      return el.getBoundingClientRect().height + parseFloat(cs.marginTop) + parseFloat(cs.marginBottom);
+    };
+    const videos = document.querySelector('.videos');
+    const videosTitle = videos?.previousElementSibling?.matches('h3.block-title') ? videos.previousElementSibling : null;
+    const optional = h(document.getElementById('moments')) + h(videos) + h(videosTitle);
+    return {
+      height: Math.round(document.body.scrollHeight - optional),
+      hidden: [...document.querySelectorAll('main *')].filter((e) => getComputedStyle(e).opacity === '0').length,
+      overflow: document.documentElement.scrollWidth > window.innerWidth,
+    };
+  });
+  console.log(`  ${name} home height (excluding optional media): ${m.height}px`);
   check(m.hidden === 0, `${name}: no content stuck hidden after scrolling (${m.hidden})`);
   check(!m.overflow, `${name}: no horizontal overflow`);
   check(errors.length === 0, `${name}: no console errors ${errors.join(' | ')}`);
