@@ -40,16 +40,6 @@ export const about = {
   ],
 };
 
-export const education = [
-  { year: '1973–78', title: 'Ph.D., Chemistry', org: 'University of Rajasthan' },
-  { year: '1971–73', title: 'M.Sc., Chemistry', org: 'University of Rajasthan' },
-  { year: '1968–71', title: 'B.Sc., Science', org: 'University of Rajasthan' },
-  { year: '1979', title: 'Organometallic Chemistry', org: 'University of Lucknow' },
-  { year: '1990', title: 'Coatings Science', org: 'North Dakota State University' },
-  { year: '2022', title: 'Financial Management', org: 'Cornell University' },
-  { year: '2025', title: 'Sustainable Supply Chain Management', org: 'University of Cambridge' },
-];
-
 export const eras = [
   {
     range: '1968 — 1989',
@@ -60,7 +50,6 @@ export const eras = [
       { year: '1973–78', title: 'Ph.D. in Chemistry — Research Scholar', org: 'University of Rajasthan, India', text: 'Heterometallic alkoxide and coordination chemistry, presented at international conferences in Vienna and Prague.' },
       { year: '1976–77', title: 'Lecturer in Science', org: 'NCERT, India' },
       { year: '1977–83', title: 'Lecturer in Chemistry', org: 'University of Delhi, India', text: 'Taught undergraduate chemistry, mentored graduate students and continued publishing in organometallic chemistry.' },
-      { year: '1983', title: 'National Scholarship for Study Abroad', org: 'Ministry of Education, Government of India' },
       { year: '1983–85', title: 'Post-doctoral Associate, Chemistry', org: 'University of Virginia' },
       { year: '1985–89', title: 'Post-doctoral Associate, Chemistry', org: 'Colorado State University', text: 'Synthetic models of metalloenzyme active sites, published in Inorganic Chemistry (1987).' },
     ],
@@ -74,10 +63,6 @@ export const eras = [
       { year: '1989', title: 'Joined Sherwin-Williams, Analytical Sciences', org: 'Chicago, Illinois', text: 'Began an industrial career in coatings research and development.' },
       { year: '1990', title: 'Coatings Science', org: 'North Dakota State University', text: 'Specialized training at a leading coatings science program.' },
       { year: '1990s–2000s', title: 'Laboratories, customers & problem-solving', org: 'Cleveland, Ohio', text: 'Set up laboratories and supported customers across automotive, aerospace, wood, general industrial, and protective & marine coatings; published and presented widely on mass spectrometry, microscopy and failure analysis.' },
-      { year: '2003', title: 'Grand Awards Judge, Chemistry', org: 'Intel International Science and Engineering Fair' },
-      { year: '2004', title: 'Session Chair & Meeting Organizer', org: 'ASM International Surface Engineering Congress' },
-      { year: '2012–13', title: 'President, Board of Trustees', org: 'Cleveland Coatings Society' },
-      { year: '2016', title: 'Invited speaker on 150 years of innovation', org: 'Cleveland Section, American Chemical Society' },
       { year: '2025', title: 'Retired as Senior Manager', org: 'After 35 years of service', text: 'Including chair of the analytical communities of practice.' },
     ],
   },
@@ -89,8 +74,6 @@ export const eras = [
       { year: '2025', title: 'Sustainable Supply Chain Management', org: 'University of Cambridge' },
       { year: '2025', title: 'ACS Career Consultant', org: 'American Chemical Society', text: 'Advising chemists on the transition from academia to industry.' },
       { year: '2025', title: 'United Nations Online Volunteer', org: 'UN Volunteers · UNDP', text: 'Grant research, proposal writing and research review for girls’ education and women’s empowerment.' },
-      { year: '2025', title: 'Editorial Board Member', org: 'International Journal of Social Science & Applied Technology' },
-      { year: '2026', title: 'Chemical Consultant', org: 'Chemical Consultants Network' },
     ],
   },
 ];
@@ -108,25 +91,6 @@ export const toolkit = [
   { group: 'Spectroscopy & Spectrometry', items: [['ICP-MS', 'Inductively Coupled Plasma Mass Spectrometry'], ['FTIR', 'Fourier-Transform Infrared'], ['NMR', 'Nuclear Magnetic Resonance'], ['MALDI', 'Matrix-Assisted Laser Desorption/Ionization'], ['XRF', 'X-Ray Fluorescence']] },
   { group: 'Microscopy', items: [['SEM', 'Scanning Electron Microscopy'], ['TEM', 'Transmission Electron Microscopy'], ['AFM', 'Atomic Force Microscopy']] },
   { group: 'Thermal Analysis', items: [['DSC', 'Differential Scanning Calorimetry'], ['TGA', 'Thermogravimetric Analysis']] },
-];
-
-export const competencies = [
-  'Materials Science',
-  'Polymer Chemistry',
-  'Organometallic Chemistry',
-  'Failure Analysis',
-  'Surface Science & Nanotechnology',
-  'QC / QA & Testing',
-  'Analytical Chemistry',
-  'Product Development',
-  'Process Optimization',
-  'Global Supply Chains',
-  'Sustainability',
-  'Technical Customer Support',
-  'Laboratory Setup & Management',
-  'R&D Team Leadership',
-  'Literature & Patent Research',
-  'Academia-to-Industry Careers',
 ];
 
 export const leadership = [

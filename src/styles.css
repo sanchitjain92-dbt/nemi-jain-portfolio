@@ -386,40 +386,14 @@ p {
 }
 
 /* ---------- profile ---------- */
-.about__cols {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 56px;
+.about__body {
+  columns: 2;
+  column-gap: 56px;
 }
 .about__body p {
   color: var(--ink-2);
   margin-bottom: 20px;
-}
-.edu ul li {
-  display: grid;
-  grid-template-columns: 72px 1fr;
-  gap: 16px;
-  padding: 14px 0;
-  border-top: 1px solid var(--line);
-}
-.edu ul li:last-child {
-  border-bottom: 1px solid var(--line);
-}
-.edu__year {
-  font-size: 13px;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-  padding-top: 2px;
-}
-.edu strong {
-  display: block;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 1.4;
-}
-.edu li span:not(.edu__year) {
-  font-size: 13.5px;
-  color: var(--muted);
+  break-inside: avoid;
 }
 .focus {
   display: grid;
@@ -631,42 +605,26 @@ p {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
+  margin: 0;
 }
-.toolkit li {
-  padding: 12px 0;
+.toolkit__col {
+  padding-top: 16px;
   border-top: 1px solid var(--line);
 }
-.toolkit strong {
-  display: block;
+.toolkit dd {
+  margin: 0;
   font-family: var(--serif);
-  font-weight: 400;
   font-size: 24px;
-  line-height: 1.2;
+  line-height: 1.5;
 }
-.toolkit li span {
-  font-size: 13.5px;
-  color: var(--muted);
+.toolkit abbr {
+  text-decoration: none;
+  cursor: help;
+  border-bottom: 1px dotted var(--soft);
 }
-.competencies {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 32px;
-}
-.competencies li {
-  position: relative;
-  padding: 14px 0 14px 22px;
-  border-bottom: 1px solid var(--line);
-  font-size: 15.5px;
-}
-.competencies li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 8px;
-  height: 8px;
-  margin-top: -4px;
-  background: var(--accent);
+.toolkit b {
+  font-weight: 400;
+  color: var(--accent);
 }
 
 /* ---------- leadership ---------- */
@@ -835,7 +793,7 @@ p {
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-.cause h4 {
+.cause h3 {
   font-family: var(--serif);
   font-weight: 400;
   font-size: 22px;
@@ -999,13 +957,13 @@ p {
   padding: 0;
   transition: transform 0.2s var(--ease), opacity 0.3s;
 }
+.output__dot {
+  display: block;
+}
 .output__dot:hover,
 .output__dot:focus-visible {
   transform: scale(1.35);
   outline: none;
-}
-.output__dot.is-dim {
-  opacity: 0.18;
 }
 .output__year {
   position: absolute;
@@ -1040,8 +998,24 @@ p {
   border-top: 1px solid var(--line);
   transition: opacity 0.3s;
 }
-.theme.is-dim {
-  opacity: 0.45;
+.theme__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 16px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.theme:hover .theme__link svg {
+  transform: translateX(3px);
+}
+.theme__link svg {
+  transition: transform 0.25s var(--ease);
+}
+.see-all {
+  margin-top: 32px;
 }
 .theme__bar {
   display: block;
@@ -1051,8 +1025,7 @@ p {
   background: var(--c);
   transition: width 0.4s var(--ease);
 }
-.theme:hover .theme__bar,
-.theme.is-active .theme__bar {
+.theme:hover .theme__bar {
   width: 100%;
 }
 .theme__meta {
@@ -1133,20 +1106,6 @@ p {
   margin-top: 6px;
 }
 
-.biblio__head {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 24px;
-  margin: 88px 0 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--line);
-}
-.block-title--flush {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
 .orcid-link {
   display: inline-flex;
   align-items: center;
@@ -1257,24 +1216,6 @@ a.work__title:hover {
   text-transform: uppercase;
   color: var(--soft);
   text-align: right;
-}
-.more {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 24px;
-  padding: 12px 22px;
-  border: 1px solid var(--ink);
-  font-size: 14px;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-.more:hover {
-  background: var(--ink);
-  color: var(--paper);
-}
-.more svg {
-  transition: transform 0.3s var(--ease);
 }
 
 .talk {
@@ -1453,6 +1394,15 @@ a.work__title:hover {
 }
 
 /* ---------- responsive ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 @media (max-width: 1100px) {
   .themes {
     grid-template-columns: repeat(2, 1fr);
@@ -1483,6 +1433,9 @@ a.work__title:hover {
 }
 
 @media (max-width: 900px) {
+  .about__body {
+    columns: 1;
+  }
   .nav--open .nav__links .nav__pub {
     margin: 14px 0 0;
     padding: 12px 16px;
@@ -1529,7 +1482,6 @@ a.work__title:hover {
   .hero__grid,
   .sh,
   .split,
-  .about__cols,
   .era,
   .contact__grid {
     grid-template-columns: 1fr;
@@ -1615,9 +1567,6 @@ a.work__title:hover {
     grid-column: 2;
     grid-row: 1;
   }
-  .competencies {
-    grid-template-columns: 1fr 1fr;
-  }
   .gantt__axis {
     margin-left: 0;
   }
@@ -1669,10 +1618,6 @@ a.work__title:hover {
   .talk__role {
     padding-top: 0;
   }
-  .biblio__head {
-    flex-direction: column;
-    align-items: flex-start;
-  }
   .work {
     grid-template-columns: 44px 10px 1fr;
     gap: 12px;
@@ -1706,7 +1651,6 @@ a.work__title:hover {
   }
   .chips,
   .toolkit,
-  .competencies,
   .causes {
     grid-template-columns: 1fr;
   }

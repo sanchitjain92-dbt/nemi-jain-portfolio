@@ -1,5 +1,5 @@
 import { Reveal, SectionHeader } from './ui.jsx';
-import { markets, toolkit, competencies } from '../data/profile.js';
+import { markets, toolkit } from '../data/profile.js';
 
 export default function Expertise() {
   return (
@@ -32,30 +32,21 @@ export default function Expertise() {
 
         <h3 className="block-title">Analytical toolkit</h3>
         <Reveal>
-          <div className="toolkit">
+          <dl className="toolkit">
             {toolkit.map((g) => (
               <div key={g.group} className="toolkit__col">
-                <span className="mini-title">{g.group}</span>
-                <ul>
-                  {g.items.map(([abbr, full]) => (
-                    <li key={abbr}>
-                      <strong>{abbr}</strong>
-                      <span>{full}</span>
-                    </li>
+                <dt className="mini-title">{g.group}</dt>
+                <dd>
+                  {g.items.map(([abbr, full], i) => (
+                    <span key={abbr}>
+                      <abbr title={full}>{abbr}</abbr>
+                      {i < g.items.length - 1 && <b aria-hidden> · </b>}
+                    </span>
                   ))}
-                </ul>
+                </dd>
               </div>
             ))}
-          </div>
-        </Reveal>
-
-        <h3 className="block-title">Core competencies</h3>
-        <Reveal>
-          <ul className="competencies">
-            {competencies.map((c) => (
-              <li key={c}>{c}</li>
-            ))}
-          </ul>
+          </dl>
         </Reveal>
       </div>
     </section>

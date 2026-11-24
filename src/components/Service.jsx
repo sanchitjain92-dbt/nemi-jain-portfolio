@@ -64,7 +64,7 @@ export default function Service() {
                 <span className="cause__tag" style={{ color: s.color }}>
                   {s.cause}
                 </span>
-                <h4>{s.org}</h4>
+                <h3>{s.org}</h3>
                 <p>{s.text}</p>
               </div>
             </Reveal>
