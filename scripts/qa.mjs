@@ -88,9 +88,11 @@ for (const [name, viewport] of [['desktop', DESKTOP], ['mobile', MOBILE]]) {
   const p = await page.evaluate(() => ({
     navHidden: getComputedStyle(document.querySelector('.nav')).display === 'none',
     hidden: [...document.querySelectorAll('main *')].filter((e) => getComputedStyle(e).opacity === '0').length,
+    bars: [...document.querySelectorAll('.gantt__bar')].map((e) => e.getBoundingClientRect().width),
   }));
   check(p.navHidden, 'print: navigation hidden');
   check(p.hidden === 0, `print: all content visible without scrolling (${p.hidden} hidden)`);
+  check(p.bars.length > 0 && p.bars.every((w) => w > 0), 'print: service timeline bars visible');
   const pdf = path.join(os.tmpdir(), 'nemi-jain-print.pdf');
   await page.pdf({ path: pdf, format: 'Letter', printBackground: false });
   console.log(`  print PDF: ${pdf}`);

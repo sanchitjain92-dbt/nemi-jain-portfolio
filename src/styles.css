@@ -1907,7 +1907,10 @@ footer[id] {
   .see-all,
   .copy-btn,
   .output__hint,
-  .nav__progress {
+  .nav__progress,
+  .filters-row,
+  .pubs__back,
+  .biblio__count {
     display: none !important;
   }
   main *,
@@ -1937,10 +1940,28 @@ footer[id] {
     background: none;
     border: 0;
   }
+  .era__sticky {
+    position: static;
+  }
+  .gantt__bar {
+    width: auto !important;
+    right: 0;
+  }
+  a[href^="https://doi.org/"]::after {
+    content: " " attr(href);
+    font-size: 9pt;
+    word-break: break-all;
+  }
+  .pubs .cite__title::after {
+    content: none;
+  }
   .chip__color,
   .orcid-badge,
   .tabs button.is-active,
-  .portrait__swatches span {
+  .portrait__swatches span,
+  .gantt__bar,
+  .output__dot,
+  .theme__bar {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
