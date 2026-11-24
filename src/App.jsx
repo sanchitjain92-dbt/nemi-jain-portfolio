@@ -8,6 +8,7 @@ import Expertise from './components/Expertise.jsx';
 import Leadership from './components/Leadership.jsx';
 import Service from './components/Service.jsx';
 import Contact from './components/Contact.jsx';
+import BackToTop from './components/BackToTop.jsx';
 import { useRoute } from './hooks/useRoute.js';
 
 const Publications = lazy(() => import('./components/Publications.jsx'));
@@ -56,6 +57,7 @@ export default function App() {
         )}
       </main>
       <Contact />
+      <BackToTop />
     </>
   );
 }
