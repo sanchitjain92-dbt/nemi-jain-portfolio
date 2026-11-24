@@ -956,8 +956,6 @@ p {
   border-radius: 50%;
   padding: 0;
   transition: transform 0.2s var(--ease), opacity 0.3s;
-}
-.output__dot {
   display: block;
 }
 .output__dot:hover,
