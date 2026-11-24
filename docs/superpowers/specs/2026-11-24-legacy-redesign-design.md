@@ -46,7 +46,7 @@ Header with "← Back to the story", stats line, type tabs + theme filter (pre-s
 
 Story · Career · Research · Service · Connect, plus a visually distinct **Publications** link. On the Publications route, section links return to home anchors (`#/` then scroll to section).
 
-**Target:** home ≤ 11,000px desktop, ≈ 17 screens mobile.
+**Target:** home ≤ 12,000px desktop (revised from 11,000 during implementation — see Ruling 6: all approved content kept; measured 11,948px after density pass vs 16,700px baseline).
 
 ## 2. Visual & reading experience
 
@@ -81,7 +81,7 @@ Contact form, CMS, analytics, multi-language, deployment/domain (local only for 
 
 1. Lighthouse (production build): Accessibility 100, SEO 100, Best Practices 100, Performance ≥ 96.
 2. Headless Chrome at 1440×900 and 390×844: zero elements stuck at opacity 0 after scrolling, no horizontal overflow, zero console errors.
-3. Home height ≤ 11,000px desktop.
+3. Home height ≤ 12,000px desktop (Ruling 6).
 4. `#/publications` deep link loads directly; `?theme=` pre-filters; "Back to the story" returns home; nav anchors work from Publications.
 5. With a temporary non-empty `gallery`/`videos`, sections render; reverted to empty, they disappear.
 6. Print output renders cleanly (PDF via headless Chrome).

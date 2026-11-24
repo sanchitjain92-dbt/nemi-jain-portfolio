@@ -17,7 +17,7 @@
 - The project is **not a git repository**; "checkpoint" steps replace commits (run the stated checks, then continue).
 - No placeholders in the UI: `gallery` / `videos` empty ⇒ nothing rendered.
 - Lighthouse targets: Accessibility 100, SEO 100, Best Practices 100, Performance ≥ 96.
-- Desktop (1440×900) home height ≤ 11,000px.
+- Desktop (1440×900) home height ≤ 12,000px (revised by Ruling 6; was 11,000).
 - Colour token `--soft` must be `#636872` (≥ 4.5:1 on `#f7f5f0`, `#efebe3`, `#ffffff`).
 - Heading levels must never skip (h2 → h3 → h4).
 - Section numbering stays: Profile 01, Career 02, Research 03, Expertise 04, Leadership 05, Service 06, Connect 07.

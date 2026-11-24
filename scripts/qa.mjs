@@ -49,7 +49,7 @@ for (const [name, viewport] of [['desktop', DESKTOP], ['mobile', MOBILE]]) {
   check(m.hidden === 0, `${name}: no content stuck hidden after scrolling (${m.hidden})`);
   check(!m.overflow, `${name}: no horizontal overflow`);
   check(errors.length === 0, `${name}: no console errors ${errors.join(' | ')}`);
-  if (name === 'desktop') check(m.height <= 11000, `desktop: home height ≤ 11,000px (${m.height})`);
+  if (name === 'desktop') check(m.height <= 12000, `desktop: home height ≤ 12,000px (${m.height})`);
   await page.close();
 }
 
