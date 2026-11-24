@@ -165,3 +165,11 @@ export const writings = [
     url: 'https://www.linkedin.com/pulse/forgiveness-offers-benefits-work-places-nemi-jain',
   },
 ];
+
+// Photos: put files in /public/photos and list them here, e.g.
+// { src: '/photos/acs-2016.jpg', alt: 'Dr. Jain speaking at the Cleveland ACS section', caption: 'Cleveland ACS', year: 2016 }
+export const gallery = [];
+
+// YouTube talks: the id is the part after "v=" in the URL, e.g.
+// { title: 'Analytical Sciences for Formulators', youtubeId: 'dQw4w9WgXcQ', event: 'Sink or Swim', year: 2012 }
+export const videos = [];

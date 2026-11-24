@@ -9,6 +9,8 @@ import Leadership from './components/Leadership.jsx';
 import Service from './components/Service.jsx';
 import Contact from './components/Contact.jsx';
 import BackToTop from './components/BackToTop.jsx';
+import { Moments } from './components/Media.jsx';
+import { gallery } from './data/profile.js';
 import { useRoute } from './hooks/useRoute.js';
 
 const Publications = lazy(() => import('./components/Publications.jsx'));
@@ -48,6 +50,7 @@ export default function App() {
           <>
             <Hero />
             <About />
+            <Moments items={gallery} />
             <Career />
             <Research />
             <Expertise />

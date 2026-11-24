@@ -3,6 +3,8 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { AuthorList, Reveal, SectionHeader } from './ui.jsx';
 import { themes, works, speaking, venues } from '../data/research.js';
 import { publicationsHref } from '../lib/route.js';
+import { Videos } from './Media.jsx';
+import { videos } from '../data/profile.js';
 
 const FIRST = 1976;
 const LAST = 2009;
@@ -144,6 +146,8 @@ export default function Research() {
             </Reveal>
           ))}
         </ul>
+
+        <Videos items={videos} />
 
         <Reveal>
           <div className="venues">
