@@ -66,7 +66,7 @@ Story · Career · Research · Service · Connect, plus a visually distinct **Pu
 
 **SEO & sharing:** meta description, Open Graph + Twitter card (title, description, `/nemi.jpg`), JSON-LD `Person` (`name`, `jobTitle`, `alumniOf`, `sameAs` LinkedIn/ORCID/ACS), `public/robots.txt`. Canonical URL omitted until a domain exists.
 
-**Performance:** self-host Instrument Serif + Inter via `@fontsource`; remove Google Fonts links. Publications page as a lazy `import()` chunk.
+**Performance:** self-host Instrument Serif via `@fontsource`; body text uses the system UI sans stack (Inter dropped — Ruling 14: the self-hosted Inter files caused the Lighthouse performance regression); remove Google Fonts links. Publications page as a lazy `import()` chunk.
 
 **Future media (no placeholders):**
 - `gallery: []` (`{ src, alt, caption, year }`) and `videos: []` (`{ title, youtubeId, year, event }`) in `src/data/profile.js`.
