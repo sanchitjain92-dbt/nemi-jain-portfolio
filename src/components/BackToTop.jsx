@@ -17,7 +17,7 @@ export default function BackToTop() {
   };
 
   return (
-    <button className={`to-top ${show ? 'is-visible' : ''}`} onClick={toTop} aria-label="Back to top" tabIndex={show ? 0 : -1}>
+    <button className={`to-top ${show ? 'is-visible' : ''}`} onClick={toTop} aria-label="Back to top" tabIndex={show ? 0 : -1} aria-hidden={!show}>
       <ArrowUp size={18} />
     </button>
   );

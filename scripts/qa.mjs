@@ -95,6 +95,16 @@ for (const [name, viewport] of [['desktop', DESKTOP], ['mobile', MOBILE]]) {
   await page.pdf({ path: pdf, format: 'Letter', printBackground: false });
   console.log(`  print PDF: ${pdf}`);
   await page.close();
+
+  const { page: narrow } = await openPage({ width: 700, height: 900 });
+  await narrow.emulateMedia({ media: 'print' });
+  const summaries = await narrow.evaluate(() =>
+    [...document.querySelectorAll('.era')].map((era) =>
+      [...era.querySelectorAll('.era__summary')].some((s) => getComputedStyle(s).display !== 'none'),
+    ),
+  );
+  check(summaries.length > 0 && summaries.every(Boolean), 'print (narrow): every career chapter shows its summary');
+  await narrow.close();
 }
 
 await browser.close();

@@ -26,6 +26,7 @@ export default function Career() {
             </aside>
 
             <div className="era__body">
+              <p className="era__summary era__summary--inline">{era.summary}</p>
               {era.ladder && (
                 <Reveal className="ladder">
                   <span className="mini-title">Career progression</span>

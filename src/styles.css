@@ -466,6 +466,9 @@ p {
   color: var(--muted);
   max-width: 280px;
 }
+.era__summary--inline {
+  display: none;
+}
 .ladder {
   background: var(--white);
   border: 1px solid var(--line);
@@ -1439,12 +1442,15 @@ main:focus {
   opacity: 0;
   transform: translateY(12px);
   pointer-events: none;
-  transition: opacity 0.3s, transform 0.3s var(--ease), background 0.2s;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s var(--ease), background 0.2s, visibility 0s linear 0.3s;
 }
 .to-top.is-visible {
   opacity: 1;
   transform: none;
   pointer-events: auto;
+  visibility: visible;
+  transition-delay: 0s;
 }
 .to-top:hover {
   background: var(--accent);
@@ -1613,8 +1619,14 @@ main:focus {
     margin: 0;
   }
   .era__idx,
-  .era__summary {
+  .era__aside .era__summary {
     display: none;
+  }
+  .era__summary--inline {
+    display: block;
+    margin: 0 0 8px;
+    font-size: 15px;
+    color: var(--muted);
   }
   .era__range {
     order: 2;
@@ -1827,8 +1839,19 @@ main:focus {
   .hero {
     padding-top: 0;
   }
-  .era__sticky {
+  .era__aside {
     position: static;
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: 0;
+  }
+  .chip__color,
+  .orcid-badge,
+  .tabs button.is-active,
+  .portrait__swatches span {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
   .entry,
   .cite,
