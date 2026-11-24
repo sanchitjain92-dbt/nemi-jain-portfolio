@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import { Reveal } from './ui.jsx';
 
@@ -42,11 +42,18 @@ export function Videos({ items }) {
 
 function VideoCard({ video }) {
   const [playing, setPlaying] = useState(false);
+  const frame = useRef(null);
+
+  useEffect(() => {
+    if (playing) frame.current?.focus();
+  }, [playing]);
+
   return (
     <figure className="video">
       <div className="video__frame">
         {playing ? (
           <iframe
+            ref={frame}
             src={`https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1`}
             title={video.title}
             allow="autoplay; encrypted-media; picture-in-picture"

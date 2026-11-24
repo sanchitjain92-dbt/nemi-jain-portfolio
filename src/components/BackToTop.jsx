@@ -14,6 +14,7 @@ export default function BackToTop() {
   const toTop = () => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    document.getElementById('main')?.focus({ preventScroll: true });
   };
 
   return (

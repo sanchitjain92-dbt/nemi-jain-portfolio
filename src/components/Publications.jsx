@@ -28,7 +28,7 @@ export default function Publications({ theme: requestedTheme }) {
     <div className="pubs">
       <div className="container">
         <a href="#research" className="pubs__back">
-          <ArrowLeft size={16} /> Back to the story
+          <ArrowLeft size={16} aria-hidden /> Back to the story
         </a>
         <header className="pubs__head">
           <span className="kicker">Publications</span>
@@ -58,7 +58,7 @@ export default function Publications({ theme: requestedTheme }) {
                   <p className="cite__venue">
                     <em>{w.venue}</em> · doi:{w.doi}
                   </p>
-                  <CopyButton text={formatCitation(w)} />
+                  <CopyButton text={formatCitation(w)} ariaLabel={`Copy citation: ${w.title}`} />
                 </div>
                 <ArrowUpRight size={18} className="cite__arrow" aria-hidden />
               </li>

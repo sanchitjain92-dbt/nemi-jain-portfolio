@@ -1,28 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Check, Copy } from 'lucide-react';
 
-export default function CopyButton({ text, label = 'Copy citation' }) {
-  const [copied, setCopied] = useState(false);
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  document.body.appendChild(ta);
+  ta.select();
+  try {
+    return document.execCommand('copy');
+  } catch {
+    return false;
+  } finally {
+    ta.remove();
+  }
+}
+
+export default function CopyButton({ text, label = 'Copy citation', ariaLabel }) {
+  const [status, setStatus] = useState(null);
+  const timer = useRef(null);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
 
   const copy = async () => {
+    let ok = true;
     try {
       await navigator.clipboard.writeText(text);
     } catch {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      ta.remove();
+      ok = fallbackCopy(text);
     }
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setStatus(ok ? 'copied' : 'failed');
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setStatus(null), 2000);
   };
 
   return (
-    <button type="button" className="copy-btn" onClick={copy}>
-      {copied ? <Check size={14} /> : <Copy size={14} />}
-      <span aria-live="polite">{copied ? 'Copied' : label}</span>
+    <button type="button" className="copy-btn" onClick={copy} aria-label={ariaLabel}>
+      {status === 'copied' ? <Check size={14} aria-hidden /> : <Copy size={14} aria-hidden />}
+      <span aria-live="polite">{status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : label}</span>
     </button>
   );
 }

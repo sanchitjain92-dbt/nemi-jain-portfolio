@@ -92,7 +92,12 @@ export default function Research() {
         <div className="themes">
           {Object.entries(themes).map(([k, t], i) => (
             <Reveal key={k} delay={i * 0.05}>
-              <a className="theme" style={{ '--c': t.color }} href={publicationsHref(k)}>
+              <a
+                className="theme"
+                style={{ '--c': t.color }}
+                href={publicationsHref(k)}
+                aria-label={`${t.label}: view ${byTheme[k]} works`}
+              >
                 <span className="theme__bar" />
                 <span className="theme__meta">
                   <span>{t.years}</span>
