@@ -1136,6 +1136,8 @@ p {
   gap: 8px;
 }
 .tabs button {
+  display: inline-flex;
+  align-items: center;
   padding: 7px 14px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -1151,18 +1153,6 @@ p {
   background: var(--ink);
   border-color: var(--ink);
   color: var(--paper);
-}
-.tabs .tabs__clear {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--ink);
-  border-color: var(--ink);
-}
-.tabs__clear i {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
 }
 .biblio__count {
   margin: 20px 0 6px;
@@ -1344,10 +1334,6 @@ a.work__title:hover {
   height: 8px;
   border-radius: 50%;
   margin-right: 6px;
-}
-.tabs button {
-  display: inline-flex;
-  align-items: center;
 }
 .copy-btn {
   display: inline-flex;
@@ -1715,6 +1701,7 @@ footer[id] {
   }
   .era__summary--inline {
     display: block;
+    max-width: none;
     margin: 0 0 8px;
     font-size: 15px;
     color: var(--muted);
