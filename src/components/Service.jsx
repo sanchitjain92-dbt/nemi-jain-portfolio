@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Reveal, SectionHeader } from './ui.jsx';
 import { service } from '../data/profile.js';
 
@@ -10,6 +10,7 @@ const TICKS = [2004, 2010, 2015, 2020, 2025];
 const pct = (year) => ((year - START) / SPAN) * 100;
 
 export default function Service() {
+  const reduce = useReducedMotion();
   return (
     <section id="service" className="section section--dark">
       <div className="container">
@@ -42,8 +43,8 @@ export default function Service() {
                 <div className="gantt__lane" role="cell">
                   <motion.div
                     className="gantt__bar"
-                    style={{ left: `${pct(s.since)}%`, background: s.color }}
-                    initial={{ width: 0 }}
+                    style={{ left: `${pct(s.since)}%`, background: s.color, ...(reduce && { width: `${100 - pct(s.since)}%` }) }}
+                    initial={reduce ? false : { width: 0 }}
                     whileInView={{ width: `${100 - pct(s.since)}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.1, delay: 0.1 * i, ease: [0.22, 1, 0.36, 1] }}

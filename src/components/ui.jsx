@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, animate } from 'framer-motion';
+import { motion, useInView, useReducedMotion, animate } from 'framer-motion';
 
 // Gentle fade-up; triggers as soon as any part of the element enters the viewport.
 export function Reveal({ children, delay = 0, className, as = 'div' }) {
   const Tag = motion[as];
+  const reduce = useReducedMotion();
   return (
     <Tag
       className={className}
-      initial={{ opacity: 0, y: 14 }}
+      initial={reduce ? false : { opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
@@ -35,13 +36,18 @@ export function SectionHeader({ num, label, title, intro, dark = false }) {
 export function Counter({ value, prefix = '', suffix = '' }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
+  const reduce = useReducedMotion();
   const [n, setN] = useState(value);
 
   useEffect(() => {
+    if (reduce) {
+      setN(value);
+      return;
+    }
     if (!inView) return;
     const c = animate(0, value, { duration: 1.4, ease: [0.16, 1, 0.3, 1], onUpdate: (v) => setN(Math.round(v)) });
     return () => c.stop();
-  }, [inView, value]);
+  }, [inView, value, reduce]);
 
   return (
     <span ref={ref}>
