@@ -32,7 +32,7 @@ export default function Publications({ theme: requestedTheme }) {
         </a>
         <header className="pubs__head">
           <span className="kicker">Publications</span>
-          <h1 className="pubs__title">Research record, 1976–2009</h1>
+          <h1 id="pubs-title" className="pubs__title" tabIndex={-1}>Research record, 1976–2009</h1>
           <p className="sh__intro">
             {works.length} journal articles, conference papers, presentations and posters — from coordination chemistry to
             coatings science.
