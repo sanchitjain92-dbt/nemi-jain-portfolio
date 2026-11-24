@@ -51,3 +51,17 @@ export function Counter({ value, prefix = '', suffix = '' }) {
     </span>
   );
 }
+
+export function AuthorList({ authors, highlight = 'N. C. Jain' }) {
+  const names = authors.split(', ');
+  return (
+    <>
+      {names.map((a, i) => (
+        <span key={a}>
+          {a === highlight ? <strong>{a}</strong> : a}
+          {i < names.length - 1 && ', '}
+        </span>
+      ))}
+    </>
+  );
+}
