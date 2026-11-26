@@ -111,13 +111,32 @@ for (const [name, viewport] of [['desktop', DESKTOP], ['mobile', MOBILE]]) {
 
   const { page: narrow } = await openPage({ width: 700, height: 900 });
   await narrow.emulateMedia({ media: 'print' });
-  const summaries = await narrow.evaluate(() =>
-    [...document.querySelectorAll('.era')].map((era) =>
-      [...era.querySelectorAll('.era__summary')].some((s) => getComputedStyle(s).display !== 'none'),
-    ),
-  );
-  check(summaries.length > 0 && summaries.every(Boolean), 'print (narrow): every career chapter shows its summary');
+  const pr = await narrow.evaluate(() => ({
+    chapters: [...document.querySelectorAll('.jy-print > li')].filter((li) => li.getBoundingClientRect().height > 0).length,
+    route: [...document.querySelectorAll('.jy-route path')].map((p) => parseFloat(getComputedStyle(p).strokeDashoffset)),
+  }));
+  check(pr.chapters === 7, `print: all 7 career chapters listed (${pr.chapters})`);
+  check(pr.route.length === 5 && pr.route.every((o) => o === 0), 'print: full journey route drawn on the map');
   await narrow.close();
+}
+
+// Career journey interaction (reduced motion => instant moves)
+{
+  const page = await browser.newPage({ viewport: DESKTOP, reducedMotion: 'reduce' });
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  const title = () => page.locator('.jy-chapter__lead h3').innerText();
+  await page.click('.jy-next');
+  check((await title()) === 'Teaching the next generation', '"Next stop" advances to chapter 2');
+  await page.locator('.jy-tab').nth(5).click();
+  check((await title()) === 'Building labs, leading people', 'stop tab jumps to Cleveland');
+  await page.keyboard.press('ArrowRight');
+  check((await title()) === 'Giving it forward', 'arrow key moves to the next chapter while focus is in the journey');
+  await page.locator('.jy-mark').first().click();
+  check((await title()) === 'A chemist in the making', 'ruler marker returns to Jaipur');
+  check(errors.length === 0, `journey: no console errors ${errors.join(' | ')}`);
+  await page.close();
 }
 
 await browser.close();

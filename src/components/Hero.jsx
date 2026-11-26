@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { Counter } from './ui.jsx';
+import TopoLines from './TopoLines.jsx';
 import { profile, stats, markets } from '../data/profile.js';
 
 const fade = (delay, reduce) => ({
@@ -12,7 +13,8 @@ const fade = (delay, reduce) => ({
 export default function Hero() {
   const reduce = useReducedMotion();
   return (
-    <section id="top" className="hero">
+    <section id="top" className="hero has-topo">
+      <TopoLines variant="hero" />
       <div className="container hero__grid">
         <div className="hero__text">
           <motion.p className="kicker" {...fade(0.05, reduce)}>

@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useRef } from 'react';
 import Nav from './components/Nav.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
-import Career from './components/Career.jsx';
+import Journey from './components/journey/Journey.jsx';
 import Research from './components/Research.jsx';
 import Expertise from './components/Expertise.jsx';
 import Leadership from './components/Leadership.jsx';
@@ -80,7 +80,7 @@ export default function App() {
             <Hero />
             <About />
             <Moments items={gallery} />
-            <Career />
+            <Journey />
             <Research />
             <Expertise />
             <Leadership />

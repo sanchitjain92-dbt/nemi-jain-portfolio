@@ -18,6 +18,8 @@ All text, dates, stats and links live in [`src/data/profile.js`](src/data/profil
 
 To feature a work in "Landmark papers" on the home page, set `landmark: true` on it in [`src/data/research.js`](src/data/research.js).
 
+The Career section is an interactive journey (map, five-decade ruler and seven chapters). Its stops, chapter text and entries live in [`src/data/journey.js`](src/data/journey.js). The map outlines in `src/data/geo.js` are generated from US Census (us-atlas) and Natural Earth (world-atlas) data — India is drawn from coastlines only, with no political borders. Regenerate with `npm run build:geo` only if you change the map framing in `scripts/build-geo.mjs`.
+
 ## Testing
 
 ```bash

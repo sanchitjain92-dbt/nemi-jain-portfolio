@@ -40,46 +40,6 @@ export const about = {
   ],
 };
 
-export const eras = [
-  {
-    range: '1968 — 1989',
-    title: 'Foundations',
-    summary: 'Rigorous training in chemistry, a decade of research and teaching in India, and postdoctoral science in the United States.',
-    entries: [
-      { year: '1968–73', title: 'B.Sc. and M.Sc. in Chemistry', org: 'University of Rajasthan, India', text: 'Selected for the 1972 Summer Institute for Meritorious PG Chemistry Students, Sardar Patel University.' },
-      { year: '1973–78', title: 'Ph.D. in Chemistry — Research Scholar', org: 'University of Rajasthan, India', text: 'Heterometallic alkoxide and coordination chemistry, presented at international conferences in Vienna and Prague.' },
-      { year: '1976–77', title: 'Lecturer in Science', org: 'NCERT, India' },
-      { year: '1977–83', title: 'Lecturer in Chemistry', org: 'University of Delhi, India', text: 'Taught undergraduate chemistry, mentored graduate students and continued publishing in organometallic chemistry.' },
-      { year: '1979', title: 'Organometallic Chemistry', org: 'University of Lucknow, India' },
-      { year: '1983–85', title: 'Post-doctoral Associate, Chemistry', org: 'University of Virginia' },
-      { year: '1985–89', title: 'Post-doctoral Associate, Chemistry', org: 'Colorado State University', text: 'Synthetic models of metalloenzyme active sites, published in Inorganic Chemistry (1987).' },
-    ],
-  },
-  {
-    range: '1989 — 2025',
-    title: 'The Sherwin-Williams Company',
-    summary: 'A 35-year career in analytical sciences and coatings R&D, from the laboratory bench to senior management.',
-    ladder: ['Research Chemist', 'Senior Scientist', 'Team Leader', 'Senior Manager'],
-    entries: [
-      { year: '1989', title: 'Joined Sherwin-Williams, Analytical Sciences', org: 'Chicago, Illinois', text: 'Began an industrial career in coatings research and development.' },
-      { year: '1990', title: 'Coatings Science', org: 'North Dakota State University', text: 'Specialized training at a leading coatings science program.' },
-      { year: '1990s–2000s', title: 'Laboratories, customers & problem-solving', org: 'Cleveland, Ohio', text: 'Set up laboratories and supported customers across automotive, aerospace, wood, general industrial, and protective & marine coatings; published and presented widely on mass spectrometry, microscopy and failure analysis.' },
-      { year: '2022', title: 'Financial Management', org: 'Cornell University' },
-      { year: '2025', title: 'Retired as Senior Manager', org: 'After 35 years of service', text: 'Including chair of the analytical communities of practice.' },
-    ],
-  },
-  {
-    range: '2025 — Present',
-    title: 'Advisory & Service',
-    summary: 'Sharing five decades of experience with the next generation of scientists and with communities worldwide.',
-    entries: [
-      { year: '2025', title: 'Sustainable Supply Chain Management', org: 'University of Cambridge' },
-      { year: '2025', title: 'ACS Career Consultant', org: 'American Chemical Society', text: 'Advising chemists on the transition from academia to industry.' },
-      { year: '2025', title: 'United Nations Online Volunteer', org: 'UN Volunteers · UNDP', text: 'Grant research, proposal writing and research review for girls’ education and women’s empowerment.' },
-    ],
-  },
-];
-
 export const markets = [
   { name: 'Automotive', chip: 'Lacquer Red', code: 'NJ-01', color: '#9E3B32', desc: 'Durable, high-gloss finishes engineered for precision.' },
   { name: 'Aerospace', chip: 'Stratus Blue', code: 'NJ-02', color: '#3B5878', desc: 'Coatings for extreme environments and exacting specifications.' },
