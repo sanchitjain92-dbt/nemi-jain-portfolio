@@ -469,54 +469,53 @@ p {
 .era__summary--inline {
   display: none;
 }
-.ladder {
-  background: var(--white);
-  border: 1px solid var(--line);
-  padding: 22px 28px 24px;
-  margin-bottom: 16px;
+.coating {
+  margin: 28px 0 0;
 }
-.ladder ol {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+.coating__stack {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0 18px 30px -22px rgba(22, 26, 34, 0.55);
 }
-.ladder ol::before {
-  content: '';
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 12%;
-  height: 1px;
-  background: var(--line);
-}
-.ladder li {
-  position: relative;
+.coat {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-height: calc(50px + var(--i) * 7px);
+  padding: 9px 14px;
+  color: #fff;
 }
-.ladder__dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: var(--white);
-  border: 1px solid var(--ink);
-  margin-bottom: 18px;
-  position: relative;
+.coat--light {
+  color: var(--ink);
 }
-.ladder li:last-child .ladder__dot {
-  background: var(--accent);
-  border-color: var(--accent);
+.coat__name {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
-.ladder__step {
-  font-size: 12px;
-  color: var(--soft);
-}
-.ladder strong {
+.coat__role {
   font-family: var(--serif);
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.2;
+  font-size: 21px;
+  line-height: 1.15;
+}
+.coat__note {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+.coating__caption {
+  margin-top: 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.coating--inline {
+  display: none;
 }
 .entry {
   display: grid;
@@ -1718,12 +1717,12 @@ footer[id] {
   .era {
     gap: 28px;
   }
-  .ladder ol {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 28px;
-  }
-  .ladder ol::before {
+  .era__aside .coating {
     display: none;
+  }
+  .coating--inline {
+    display: block;
+    margin: 4px 0 20px;
   }
   .entry {
     grid-template-columns: 1fr;
@@ -1934,6 +1933,12 @@ footer[id] {
     width: auto !important;
     right: 0;
   }
+  .coat {
+    clip-path: none !important;
+  }
+  .coating {
+    break-inside: avoid;
+  }
   a[href^="https://doi.org/"]::after {
     content: " " attr(href);
     font-size: 9pt;
@@ -1948,7 +1953,8 @@ footer[id] {
   .portrait__swatches span,
   .gantt__bar,
   .output__dot,
-  .theme__bar {
+  .theme__bar,
+  .coat {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }

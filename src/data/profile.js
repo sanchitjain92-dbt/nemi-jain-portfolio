@@ -59,7 +59,14 @@ export const eras = [
     range: '1989 — 2025',
     title: 'The Sherwin-Williams Company',
     summary: 'A 35-year career in analytical sciences and coatings R&D, from the laboratory bench to senior management.',
-    ladder: ['Research Chemist', 'Senior Scientist', 'Team Leader', 'Senior Manager'],
+    // Career progression drawn as a coating cross-section, substrate first (bottom layer).
+    coats: [
+      { coat: 'Substrate', role: 'Chemistry foundations', note: 'Ph.D. and postdoctoral research', color: '#B9A58C', light: true },
+      { coat: 'Primer', role: 'Research Chemist', note: 'At the bench', color: '#7A5536' },
+      { coat: 'Basecoat', role: 'Senior Scientist', note: 'Deep expertise', color: '#3B5878' },
+      { coat: 'Midcoat', role: 'Team Leader', note: 'Leading people', color: '#9E3B32' },
+      { coat: 'Topcoat', role: 'Senior Manager', note: 'Leading the function · chair, analytical communities of practice', color: '#161A22' },
+    ],
     entries: [
       { year: '1989', title: 'Joined Sherwin-Williams, Analytical Sciences', org: 'Chicago, Illinois', text: 'Began an industrial career in coatings research and development.' },
       { year: '1990', title: 'Coatings Science', org: 'North Dakota State University', text: 'Specialized training at a leading coatings science program.' },

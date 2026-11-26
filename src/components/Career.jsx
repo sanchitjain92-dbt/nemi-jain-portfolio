@@ -1,4 +1,5 @@
 import { Reveal, SectionHeader } from './ui.jsx';
+import CoatingStack from './CoatingStack.jsx';
 import { eras } from '../data/profile.js';
 
 export default function Career() {
@@ -22,25 +23,13 @@ export default function Career() {
                   {era.title}
                 </h3>
                 <p className="era__summary">{era.summary}</p>
+                <CoatingStack coats={era.coats} range={era.range} className="coating--aside" />
               </div>
             </aside>
 
             <div className="era__body">
               <p className="era__summary era__summary--inline">{era.summary}</p>
-              {era.ladder && (
-                <Reveal className="ladder">
-                  <span className="mini-title">Career progression</span>
-                  <ol>
-                    {era.ladder.map((step, s) => (
-                      <li key={step}>
-                        <span className="ladder__dot" />
-                        <span className="ladder__step">0{s + 1}</span>
-                        <strong>{step}</strong>
-                      </li>
-                    ))}
-                  </ol>
-                </Reveal>
-              )}
+              <CoatingStack coats={era.coats} range={era.range} className="coating--inline" />
               <ul className="entries">
                 {era.entries.map((e) => (
                   <Reveal as="li" key={e.year + e.title} className="entry">
