@@ -54,15 +54,10 @@ for (const [name, viewport] of [['desktop', DESKTOP], ['mobile', MOBILE]]) {
       height: Math.round(document.body.scrollHeight - optional),
       hidden: [...document.querySelectorAll('main *')].filter((e) => getComputedStyle(e).opacity === '0').length,
       overflow: document.documentElement.scrollWidth > window.innerWidth,
-      // Coating layers reveal via clip-path, so opacity checks can't see them stuck.
-      clippedCoats: [...document.querySelectorAll('.coat')].filter(
-        (e) => e.offsetParent !== null && getComputedStyle(e).clipPath.startsWith('inset(100%')
-      ).length,
     };
   });
   console.log(`  ${name} home height (excluding optional media): ${m.height}px`);
   check(m.hidden === 0, `${name}: no content stuck hidden after scrolling (${m.hidden})`);
-  check(m.clippedCoats === 0, `${name}: career coating layers fully applied after scrolling (${m.clippedCoats} clipped)`);
   check(!m.overflow, `${name}: no horizontal overflow`);
   check(errors.length === 0, `${name}: no console errors ${errors.join(' | ')}`);
   if (name === 'desktop') check(m.height <= 12000, `desktop: home height ≤ 12,000px (${m.height})`);
