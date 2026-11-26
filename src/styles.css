@@ -1021,6 +1021,134 @@ p {
   display: none;
 }
 
+/* Sherwin-Williams chapters: rolled paint stripe. Final state is the default; .is-painting animates into it. */
+.jy-paint {
+  position: absolute;
+  left: 16px;
+  top: 0;
+  bottom: 0;
+  width: 124px;
+  pointer-events: none;
+}
+.jy-paint__defs {
+  position: absolute;
+}
+.jy-paint__goo {
+  position: absolute;
+  inset: 0;
+  filter: url(#jy-goo);
+}
+.jy-paint__stripe {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 100px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07), transparent 30%, rgba(0, 0, 0, 0.07) 72%, rgba(255, 255, 255, 0.05)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 5px),
+    var(--blue);
+}
+.jy-paint__drip {
+  position: absolute;
+  top: calc(100% - 106px);
+  left: var(--x);
+  width: var(--w);
+  height: var(--h);
+  background: var(--blue);
+  border-radius: 0 0 999px 999px;
+  transform-origin: top;
+}
+.jy-paint__drip::after {
+  content: '';
+  position: absolute;
+  left: -15%;
+  right: -15%;
+  bottom: -4px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: inherit;
+}
+.jy-paint__track {
+  position: absolute;
+  left: 0;
+  right: -26px;
+  top: 0;
+  bottom: 100px;
+}
+.jy-paint__roller {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 150px;
+  height: 110px;
+  transform: translateY(-100%);
+  opacity: 0;
+}
+.jy-chapter.is-painted .jy-numeral {
+  z-index: 1;
+  color: #fff;
+}
+.jy-chapter.is-painted .jy-numeral small {
+  color: rgba(255, 255, 255, 0.8);
+}
+.jy-chapter.is-painting .jy-paint__stripe {
+  animation: jy-roll 1.2s cubic-bezier(0.45, 0.05, 0.25, 1) both;
+}
+.jy-chapter.is-painting .jy-paint__roller {
+  animation:
+    jy-roller-move 1.2s cubic-bezier(0.45, 0.05, 0.25, 1) both,
+    jy-roller-out 0.35s ease 1.2s both;
+}
+.jy-chapter.is-painting .jy-paint__drip {
+  animation: jy-drip var(--dur) cubic-bezier(0.3, 0.1, 0.2, 1) var(--delay) both;
+}
+.jy-chapter.is-painting .jy-numeral {
+  animation: jy-num-white 0.5s ease 0.5s both;
+}
+.jy-chapter.is-painting .jy-numeral small {
+  animation: jy-num-small 0.5s ease 0.6s both;
+}
+@keyframes jy-roll {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+@keyframes jy-roller-move {
+  from {
+    top: 0%;
+  }
+  to {
+    top: 100%;
+  }
+}
+@keyframes jy-roller-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes jy-drip {
+  from {
+    transform: scaleY(0);
+  }
+  60% {
+    transform: scaleY(1.05);
+  }
+}
+@keyframes jy-num-white {
+  from {
+    color: var(--accent);
+  }
+}
+@keyframes jy-num-small {
+  from {
+    color: var(--soft);
+  }
+}
+
 /* ---------- expertise ---------- */
 #expertise .block-title:first-of-type {
   margin-top: 0;
@@ -2229,6 +2357,28 @@ footer[id] {
   .jy-chapter {
     padding: 22px 20px 24px;
     row-gap: 18px;
+  }
+  .jy-paint {
+    left: 0;
+    width: 6px;
+  }
+  .jy-paint__goo {
+    filter: none;
+  }
+  .jy-paint__stripe,
+  .jy-paint__track {
+    bottom: 50px;
+  }
+  .jy-paint__drip,
+  .jy-paint__track {
+    display: none;
+  }
+  .jy-paint__drip:nth-of-type(2) {
+    display: block;
+    top: calc(100% - 54px);
+    left: 0;
+    width: 100%;
+    height: 36px;
   }
   .jy-chapter__yrs {
     font-size: 42px;

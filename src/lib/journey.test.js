@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { flightAt, stopAt, levelAt, rulerYearAt, distanceAt, cumulativeKm, haversineKm } from './journey.js';
+import { flightAt, stopAt, levelAt, rulerYearAt, distanceAt, cumulativeKm, haversineKm, paintState } from './journey.js';
 
 const STOPS = 7; // 6 places + the advisory chapter (no flight)
 
@@ -36,5 +36,13 @@ describe('journey progress', () => {
     expect(km[2]).toBeCloseTo(2 * km[1]);
     expect(distanceAt(0.5, km)).toBeCloseTo(km[1] / 2);
     expect(distanceAt(9, km)).toBe(km[2]);
+  });
+
+  it('paints the Sherwin-Williams chapters, animating only on arrival from another chapter', () => {
+    const stops = [{}, {}, { sherwin: true }, { sherwin: true }, {}];
+    expect(paintState(1, 2, stops)).toEqual({ painted: true, animate: true });
+    expect(paintState(2, 3, stops)).toEqual({ painted: true, animate: false });
+    expect(paintState(3, 4, stops)).toEqual({ painted: false, animate: false });
+    expect(paintState(4, 3, stops)).toEqual({ painted: true, animate: true });
   });
 });

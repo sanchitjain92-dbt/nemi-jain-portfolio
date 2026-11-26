@@ -133,9 +133,48 @@ for (const [name, viewport] of [['desktop', DESKTOP], ['mobile', MOBILE]]) {
   check((await title()) === 'Building labs, leading people', 'stop tab jumps to Cleveland');
   await page.keyboard.press('ArrowRight');
   check((await title()) === 'Giving it forward', 'arrow key moves to the next chapter while focus is in the journey');
+  const paint = () =>
+    page.evaluate(() => ({
+      stripe: !!document.querySelector('.jy-chapter .jy-paint'),
+      numeral: getComputedStyle(document.querySelector('.jy-numeral')).color,
+    }));
+  await page.locator('.jy-tab').nth(4).click();
+  const chi = await paint();
+  check(chi.stripe && chi.numeral === 'rgb(255, 255, 255)', 'paint stripe on Chicago, finished for reduced motion (white numeral)');
+  await page.locator('.jy-tab').nth(3).click();
+  check(!(await paint()).stripe, 'no paint stripe outside the Sherwin-Williams chapters');
   await page.locator('.jy-mark').first().click();
   check((await title()) === 'A chemist in the making', 'ruler marker returns to Jaipur');
   check(errors.length === 0, `journey: no console errors ${errors.join(' | ')}`);
+  await page.close();
+}
+
+// Paint stripe animation settles into its finished state (motion allowed)
+{
+  const page = await browser.newPage({ viewport: DESKTOP });
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto(BASE, { waitUntil: 'networkidle' });
+  await page.locator('.jy-tab').nth(3).click();
+  await page.waitForFunction(() => document.querySelector('.jy-chapter__lead h3')?.textContent === 'Modelling nature’s catalysts' && document.querySelector('.jy-scrub').value === '300');
+  await page.locator('.jy-next').click();
+  await page.waitForFunction(() => document.querySelector('.jy-chapter.is-painting'));
+  await page.waitForFunction(() => document.querySelector('.jy-chapter').getAnimations({ subtree: true }).every((a) => a.playState === 'finished'), null, { timeout: 8000 });
+  const done = await page.evaluate(() => {
+    const ch = document.querySelector('.jy-chapter');
+    return {
+      painting: ch.classList.contains('is-painting'),
+      stripeClip: getComputedStyle(ch.querySelector('.jy-paint__stripe')).clipPath,
+      drips: [...ch.querySelectorAll('.jy-paint__drip')].map((d) => getComputedStyle(d).transform),
+      roller: getComputedStyle(ch.querySelector('.jy-paint__roller')).opacity,
+    };
+  });
+  check(done.painting, 'arriving at Chicago from Fort Collins plays the paint animation');
+  check(
+    ['none', 'inset(0px)'].includes(done.stripeClip) && done.drips.every((t) => t === 'none' || t === 'matrix(1, 0, 0, 1, 0, 0)') && done.roller === '0',
+    `paint stripe ends fully rolled with drips settled (${done.stripeClip}; drips ${done.drips.join(" / ")}; roller ${done.roller})`
+  );
+  check(errors.length === 0, `paint: no console errors ${errors.join(' | ')}`);
   await page.close();
 }
 

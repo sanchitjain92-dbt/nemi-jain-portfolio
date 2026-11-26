@@ -6,7 +6,7 @@ import TopoLines from '../TopoLines.jsx';
 import JourneyMap from './JourneyMap.jsx';
 import { Altimeter, Chapter, Ruler, StopTabs } from './parts.jsx';
 import { journey, LEVELS } from '../../data/journey.js';
-import { cumulativeKm, distanceAt, levelAt, rulerYearAt, stopAt } from '../../lib/journey.js';
+import { cumulativeKm, distanceAt, levelAt, paintState, rulerYearAt, stopAt } from '../../lib/journey.js';
 
 const LAST = journey.length - 1;
 const KM = cumulativeKm(journey.slice(0, 6).map((s) => s.coords));
@@ -47,6 +47,9 @@ export default function Journey() {
   useEffect(() => () => cancelAnimationFrame(raf.current), []);
 
   const current = stopAt(s, journey.length);
+  // Remember the previous chapter so the paint animates only when entering the Sherwin-Williams years.
+  const [paint, setPaint] = useState({ stop: 0, painted: false, animate: false });
+  if (paint.stop !== current) setPaint({ stop: current, ...paintState(paint.stop, current, journey) });
   const level = levelAt(s, LEVEL_BY_STOP);
   const go = (i) => {
     setTouched(true);
@@ -126,7 +129,7 @@ export default function Journey() {
           <Ruler year={s >= LAST ? 2027 : rulerYearAt(s, END_BY_STOP)} current={current} onSelect={go} />
           <StopTabs current={current} onSelect={go} />
           <section aria-live="polite" aria-label="Journey chapter">
-            <Chapter index={current} onSelect={go} invite={!touched} />
+            <Chapter index={current} onSelect={go} invite={!touched} painted={paint.painted} animatePaint={paint.animate} />
           </section>
         </div>
 

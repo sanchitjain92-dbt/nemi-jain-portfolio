@@ -51,7 +51,7 @@ export const journey = [
     ],
   },
   {
-    code: 'CHI', city: 'Chicago', region: 'Illinois, USA', country: 'us', coords: [-87.63, 41.88], level: 3,
+    code: 'CHI', city: 'Chicago', region: 'Illinois, USA', country: 'us', coords: [-87.63, 41.88], level: 3, sherwin: true,
     start: 1989, end: 1990.5, years: '1989', mark: '1989',
     title: 'Into industry',
     summary: 'Joined The Sherwin-Williams Company in Analytical Sciences, beginning a 35-year industrial career.',
@@ -61,7 +61,7 @@ export const journey = [
     ],
   },
   {
-    code: 'CLE', city: 'Cleveland', region: 'Ohio, USA', country: 'us', coords: [-81.69, 41.5], level: 6,
+    code: 'CLE', city: 'Cleveland', region: 'Ohio, USA', country: 'us', coords: [-81.69, 41.5], level: 6, sherwin: true,
     start: 1990.5, end: 2025, years: '1990s–2025', mark: '',
     title: 'Building labs, leading people',
     summary: 'Set up laboratories and supported customers across five coatings markets, rising to senior manager and chair of the analytical communities of practice.',

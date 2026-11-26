@@ -37,3 +37,9 @@ export function cumulativeKm(points) {
 }
 
 export const distanceAt = interpolate;
+
+// Sherwin-Williams chapters get a rolled paint stripe; it animates only when arriving from a non-Sherwin chapter.
+export function paintState(prev, next, stops) {
+  const painted = Boolean(stops[next]?.sherwin);
+  return { painted, animate: painted && !stops[prev]?.sherwin };
+}

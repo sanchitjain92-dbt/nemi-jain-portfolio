@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { journey, journeyEras, LEVELS } from '../../data/journey.js';
+import PaintStripe from './PaintStripe.jsx';
 
 const Y0 = 1968;
 const Y1 = 2027;
@@ -121,12 +122,13 @@ export function StopTabs({ current, onSelect }) {
   );
 }
 
-export function Chapter({ index, onSelect, invite }) {
+export function Chapter({ index, onSelect, invite, painted, animatePaint }) {
   const stop = journey[index];
   const prev = journey[index - 1];
   const next = journey[index + 1];
   return (
-    <div className="jy-chapter" key={index}>
+    <div className={`jy-chapter ${painted ? 'is-painted' : ''} ${animatePaint ? 'is-painting' : ''}`} key={index}>
+      {painted && <PaintStripe />}
       <div className="jy-numeral" aria-hidden="true">
         0{index + 1}
         <small>of 0{journey.length}</small>
