@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { Play } from 'lucide-react';
 import { Reveal } from './ui.jsx';
 
+// Lets gallery entries be written as '/photos/x.jpg' even when the site is served from a sub-path.
+const assetUrl = (src) => (src.startsWith('/') && !src.startsWith('//') ? import.meta.env.BASE_URL + src.slice(1) : src);
+
 export function Moments({ items }) {
   if (!items?.length) return null;
   return (
@@ -11,7 +14,7 @@ export function Moments({ items }) {
         <div className="moments__strip">
           {items.map((p) => (
             <Reveal as="figure" key={p.src} className="moment">
-              <img src={p.src} alt={p.alt} loading="lazy" />
+              <img src={assetUrl(p.src)} alt={p.alt} loading="lazy" />
               {(p.caption || p.year) && (
                 <figcaption>
                   {p.caption}

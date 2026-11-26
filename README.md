@@ -10,7 +10,7 @@ npm install
 npm run dev        # http://localhost:5173
 ```
 
-`npm run build` produces a static site in `dist/` that can be deployed to any static host (Netlify, Vercel, GitHub Pages).
+`npm run build` produces a static site in `dist/` (see "Deploying" below).
 
 ## Editing content
 
@@ -29,9 +29,13 @@ npm run qa         # Playwright acceptance checks (layout, routing, print)
 
 `npm run qa` needs a production build being served: run `npm run build`, then `npx vite preview --port 4173` in another terminal. It drives Google Chrome at the default macOS path (`/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`); set `CHROME_PATH` to use another Chrome binary and `QA_URL` to test a different address (default `http://localhost:4173/`).
 
-## Before deploying
+## Deploying (GitHub Pages)
 
-Once a domain exists, change the `og:image` and `twitter:image` meta tags in `index.html` to absolute URLs (e.g. `https://example.com/nemi.jpg`) and add a `<link rel="canonical">` with the site's URL.
+The site is published at **https://sanchitjain92-dbt.github.io/nemi-jain-portfolio/** from the repo `sanchitjain92-dbt/nemi-jain-portfolio`. Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which tests, builds and publishes `dist/`. One-time setup: in the repo go to **Settings → Pages → Source: GitHub Actions**.
+
+Production builds use the base path `/nemi-jain-portfolio/` (see `vite.config.js`); `npm run dev` still serves at `/`. To check a production build locally, run `npm run build && npx vite preview --port 4173` and open `http://localhost:4173/nemi-jain-portfolio/` (for QA: `QA_URL=http://localhost:4173/nemi-jain-portfolio/ npm run qa`).
+
+If the repo is renamed or a custom domain is added, update `base` in `vite.config.js` and the absolute URLs (canonical, `og:url`, `og:image`, `twitter:image`, JSON-LD) in `index.html`.
 
 ## Content to send later
 

@@ -3,7 +3,7 @@
 export const profile = {
   name: 'Nemi Jain',
   honorific: 'Dr.',
-  photo: '/nemi.jpg',
+  photo: `${import.meta.env.BASE_URL}nemi.jpg`,
   location: 'Cleveland, Ohio',
   tagline: ['Chemist', 'R&D Leader', 'Mentor'],
   statement:
